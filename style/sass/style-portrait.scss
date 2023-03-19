@@ -1,0 +1,230 @@
+@import "theme/nord";
+
+:root {
+  /*--heading-fonts: "JetBrainsMono Nerd Font";*/
+  --heading-fonts: "Ubuntu Nerd Font";
+  font-family: "JetBrainsMono Nerd Font";
+}
+
+// ------------ Title Styling ------------
+
+h1 {
+  color: $nord7;
+  font-family: var(--heading-fonts);
+}
+
+h2 {
+  color: $nord9;
+  font-family: var(--heading-fonts);
+}
+
+h3 {
+  color: $nord10;
+  font-family: var(--heading-fonts);
+}
+
+h4 {
+  color: $nord3;
+  font-style: italic;
+  font-family: var(--heading-fonts);
+}
+
+h1.title {
+  color: $nord0;
+  text-align: center;
+}
+
+// ------------ Common style ------------
+
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+// ------------ Table styling ------------
+
+table {
+  border-collapse: collapse;
+  table-layout: auto;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #bbb;
+  padding: 10px;
+}
+
+th {
+  background-color: $nord6;
+}
+
+// ------------ TOC styling ------------
+
+#toc-title {
+  color: $nord1;
+}
+
+nav {
+  page-break-after: always;
+  position: relative;
+  margin-left: -0.5em;
+  background: none;
+  string-set: heading content();
+
+  ul {
+    margin-top: 0;
+    // list-style-type: upper-roman;
+    list-style-type: none;
+    padding-left: 0%;
+
+    li {
+      margin-top: 0.75em;
+      margin-bottom: 1em;
+      width: 100%;
+
+      a {
+        border-bottom: 0.5px solid $nord7;
+        // color: $nord7;
+        display: block;
+        height: 2em;
+        padding-top: 0.6em;
+        padding-left: 0.6em;
+        font-size: 0.8em;
+      }
+
+      a::after {
+        content: target-counter(attr(href url), page, decimal);
+        float: right;
+        margin-right: 10px;
+      }
+
+      ul {
+        padding-left: 3%;
+        margin-top: 1.5em;
+
+        li {
+          a {
+            display: block;
+            border-bottom: 0.5px solid $nord9;
+            // color: $nord9;
+          }
+
+          ul {
+            li {
+              a {
+                display: block;
+                border-bottom: 0.5px solid $nord10;
+                // color: $nord10;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+    outline: none;
+    color: black;
+  }
+
+  code {
+    background: none;
+  }
+}
+
+// ------------ Page Styling ------------
+
+@page {
+  @top-left {
+    font-size: 0.75em;
+    font-style: italic;
+    /*font-weight: 700;*/
+  }
+
+  @top-right {
+    font-size: 0.75em;
+    /*font-weight: 700;*/
+  }
+
+  @bottom-right {
+    font-size: small;
+    /*font-weight: 700;*/
+    content: counter(page) "/" counter(pages);
+  }
+}
+
+// ------------ Picture Styling ------------
+
+figure {
+  max-width: 45%;
+  float: right;
+
+  img {
+    vertical-align: top;
+    max-width: 100%;
+    max-height: 9cm;
+    //border-radius: 10px;
+    float: right;
+  }
+
+  figcaption {
+    text-align: center;
+  }
+}
+
+li img {
+  /*    vertical-align: top;*/
+  max-width: 75%;
+  /*max-height:9cm;*/
+  border-radius: 10px;
+
+  display: block;
+}
+
+img {
+  width: 100%;
+}
+
+img.badge {
+  max-width: 100px;
+  width: 65%;
+}
+
+// ------------ Page Break ------------
+
+// a {
+//   page-break-inside: avoid
+// }
+
+// blockquote {
+//   page-break-inside: avoid;
+// }
+
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//   page-break-after: avoid;
+//   page-break-inside: avoid
+// }
+
+img {
+  page-break-inside: avoid;
+  page-break-after: avoid;
+}
+
+table,
+pre {
+  page-break-inside: avoid;
+}
+
+// ul,
+// ol,
+// dl {
+//   page-break-before: avoid
+// }

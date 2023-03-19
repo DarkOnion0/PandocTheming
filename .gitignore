@@ -1,0 +1,20 @@
+# Exlcude transitive deps
+*.pdf
+*.html
+#*.css*
+
+# Enable tracking for pacakge template
+!default*
+
+# Exclude JS deps
+node_modules/
+
+# Exclude Nix tmp stuff
+.direnv/
+.devenv/
+.pre-commit-config.yaml
+
+result*
+
+# Exclude test file
+*test*

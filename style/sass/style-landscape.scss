@@ -1,0 +1,175 @@
+@import "theme/nord";
+
+:root {
+  /*--heading-fonts: "JetBrainsMono Nerd Font";*/
+  --heading-fonts: "Ubuntu Nerd Font";
+  font-family: "JetBrainsMono Nerd Font";
+}
+
+// ------------ Title Styling ------------
+
+h1 {
+  color: $nord7;
+  font-family: var(--heading-fonts);
+}
+
+@media print {
+  h1 {
+    page-break-before: always;
+  }
+}
+
+h2 {
+  color: $nord9;
+  font-family: var(--heading-fonts);
+}
+
+h3 {
+  color: $nord10;
+  font-family: var(--heading-fonts);
+}
+
+h4 {
+  color: $nord3;
+  font-style: italic;
+  font-family: var(--heading-fonts);
+}
+
+h1.title {
+  color: $nord0;
+  text-align: center;
+}
+
+// ------------ Common style ------------
+
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+// @for $i from 1 to 5 {
+//   t#{$i} {
+//     margin-left: ($i * 5%);
+//   }
+// }
+
+// .header-section-number::after,
+// .toc-section-number::after {
+//   content: ".";
+// }
+
+// ------------ Table styling ------------
+
+table {
+  border-collapse: collapse;
+  table-layout: auto;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #bbb;
+  padding: 10px;
+}
+
+th {
+  background-color: $nord6;
+}
+
+// ------------ TOC styling ------------
+
+#toc-title {
+  color: $nord1;
+}
+
+nav {
+  page-break-after: always;
+  position: relative;
+  margin-left: -0.5em;
+  background: none;
+  string-set: heading content();
+  page-break-after: always;
+
+  ul {
+    margin-top: 0;
+    // list-style-type: upper-roman;
+    list-style-type: none;
+    padding-left: 0%;
+
+    li {
+      margin-top: 0.75em;
+      margin-bottom: 1em;
+      width: 100%;
+
+      a {
+        border-bottom: 0.5px solid $nord7;
+        // color: $nord7;
+        display: block;
+        height: 2em;
+        padding-top: 0.6em;
+        padding-left: 0.6em;
+        font-size: 0.8em;
+      }
+
+      a::after {
+        content: target-counter(attr(href url), page, decimal);
+        float: right;
+        margin-right: 10px;
+      }
+
+      ul {
+        padding-left: 3%;
+        margin-top: 1.5em;
+
+        li {
+          a {
+            display: block;
+            border-bottom: 0.5px solid $nord9;
+            // color: $nord9;
+          }
+
+          ul {
+            li {
+              a {
+                display: block;
+                border-bottom: 0.5px solid $nord10;
+                // color: $nord10;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+    outline: none;
+    color: black;
+  }
+
+  code {
+    background: none;
+  }
+}
+
+// ------------ Page Styling ------------
+
+@page {
+  size: A3 landscape;
+
+  @top-left {
+    font-size: 0.75em;
+    font-style: italic;
+    /*font-weight: 700;*/
+  }
+  @top-right {
+    font-size: 0.75em;
+    /*font-weight: 700;*/
+  }
+  @bottom-right {
+    font-size: small;
+    /*font-weight: 700;*/
+    content: counter(page) "/" counter(pages);
+  }
+}

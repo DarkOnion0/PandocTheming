@@ -1,0 +1,166 @@
+:root {
+  /*--heading-fonts: "JetBrainsMono Nerd Font";*/
+  --heading-fonts: "Ubuntu Nerd Font";
+  font-family: "JetBrainsMono Nerd Font";
+}
+
+h1 {
+  color: #8fbcbb;
+  font-family: var(--heading-fonts);
+}
+
+h2 {
+  color: #81a1c1;
+  font-family: var(--heading-fonts);
+}
+
+h3 {
+  color: #5e81ac;
+  font-family: var(--heading-fonts);
+}
+
+h4 {
+  color: #4c566a;
+  font-style: italic;
+  font-family: var(--heading-fonts);
+}
+
+h1.title {
+  color: #2e3440;
+  text-align: center;
+}
+
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+table {
+  border-collapse: collapse;
+  table-layout: auto;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #bbb;
+  padding: 10px;
+}
+
+th {
+  background-color: #eceff4;
+}
+
+#toc-title {
+  color: #3b4252;
+}
+
+nav {
+  page-break-after: always;
+  position: relative;
+  margin-left: -0.5em;
+  background: none;
+  string-set: heading content();
+}
+nav ul {
+  margin-top: 0;
+  list-style-type: none;
+  padding-left: 0%;
+}
+nav ul li {
+  margin-top: 0.75em;
+  margin-bottom: 1em;
+  width: 100%;
+}
+nav ul li a {
+  border-bottom: 0.5px solid #8fbcbb;
+  display: block;
+  height: 2em;
+  padding-top: 0.6em;
+  padding-left: 0.6em;
+  font-size: 0.8em;
+}
+nav ul li a::after {
+  content: target-counter(attr(href url), page, decimal);
+  float: right;
+  margin-right: 10px;
+}
+nav ul li ul {
+  padding-left: 3%;
+  margin-top: 1.5em;
+}
+nav ul li ul li a {
+  display: block;
+  border-bottom: 0.5px solid #81a1c1;
+}
+nav ul li ul li ul li a {
+  display: block;
+  border-bottom: 0.5px solid #5e81ac;
+}
+nav a {
+  text-decoration: none;
+  outline: none;
+  color: black;
+}
+nav code {
+  background: none;
+}
+
+@page {
+  @top-left {
+    font-size: 0.75em;
+    font-style: italic;
+    /*font-weight: 700;*/
+  }
+  @top-right {
+    font-size: 0.75em;
+    /*font-weight: 700;*/
+  }
+  @bottom-right {
+    font-size: small;
+    /*font-weight: 700;*/
+    content: counter(page) "/" counter(pages);
+  }
+}
+figure {
+  max-width: 45%;
+  float: right;
+}
+figure img {
+  vertical-align: top;
+  max-width: 100%;
+  max-height: 9cm;
+  float: right;
+}
+figure figcaption {
+  text-align: center;
+}
+
+li img {
+  /*    vertical-align: top;*/
+  max-width: 75%;
+  /*max-height:9cm;*/
+  border-radius: 10px;
+  display: block;
+}
+
+img {
+  width: 100%;
+}
+
+img.badge {
+  max-width: 100px;
+  width: 65%;
+}
+
+img {
+  page-break-inside: avoid;
+  page-break-after: avoid;
+}
+
+table,
+pre {
+  page-break-inside: avoid;
+}
+
+/*# sourceMappingURL=style-portrait.css.map */
