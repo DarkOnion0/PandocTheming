@@ -1,38 +1,51 @@
 :root {
-  /*--heading-fonts: "JetBrainsMono Nerd Font";*/
-  --heading-fonts: "Ubuntu Nerd Font";
   font-family: "JetBrainsMono Nerd Font";
 }
 
+@page {
+  @top-left {
+    font-size: 0.75em;
+    font-style: italic;
+  }
+  @top-right {
+    font-size: 0.75em;
+  }
+  @bottom-right {
+    font-size: small;
+    content: counter(page) "/" counter(pages);
+  }
+}
 h1 {
   color: #8fbcbb;
-  font-family: var(--heading-fonts);
 }
-
-h2 {
-  color: #81a1c1;
-  font-family: var(--heading-fonts);
+@media print {
+  h1 {
+    page-break-before: always;
+  }
 }
-
-h3 {
-  color: #5e81ac;
-  font-family: var(--heading-fonts);
-}
-
-h4 {
-  color: #4c566a;
-  font-style: italic;
-  font-family: var(--heading-fonts);
-}
-
 h1.title {
   color: #2e3440;
   text-align: center;
 }
 
-p {
-  text-align: justify;
-  text-justify: inter-word;
+h2 {
+  color: #81a1c1;
+}
+
+h3 {
+  color: #5e81ac;
+}
+
+h4 {
+  color: #4c566a;
+  font-style: italic;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Ubuntu Nerd Font";
 }
 
 table {
@@ -61,6 +74,7 @@ nav {
   margin-left: -0.5em;
   background: none;
   string-set: heading content();
+  page-break-after: always;
 }
 nav ul {
   margin-top: 0;
@@ -106,22 +120,6 @@ nav code {
   background: none;
 }
 
-@page {
-  @top-left {
-    font-size: 0.75em;
-    font-style: italic;
-    /*font-weight: 700;*/
-  }
-  @top-right {
-    font-size: 0.75em;
-    /*font-weight: 700;*/
-  }
-  @bottom-right {
-    font-size: small;
-    /*font-weight: 700;*/
-    content: counter(page) "/" counter(pages);
-  }
-}
 figure {
   max-width: 45%;
   float: right;
@@ -161,6 +159,11 @@ img {
 table,
 pre {
   page-break-inside: avoid;
+}
+
+p {
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 /*# sourceMappingURL=style-portrait.css.map */
