@@ -27,11 +27,7 @@ $font-common: "JetBrainsMono Nerd Font";
 
 h1 {
   color: $nord7;
-  @media print {
-    & {
-      page-break-before: always;
-    }
-  }
+
   &.title {
     color: $nord0;
     text-align: center;
@@ -88,7 +84,6 @@ nav {
   margin-left: -0.5em;
   background: none;
   string-set: heading content();
-  page-break-after: always;
 
   ul {
     margin-top: 0;
