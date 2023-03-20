@@ -29,6 +29,7 @@ end
 if set --query _flag_style
     #set should_run "true"
     printf "Style: %s\n" $_flag_style
+    set _flag_style "--css $_flag_style"
 end
 
 if set --query _flag_orientation
@@ -42,4 +43,4 @@ end
 
 # Run the parser
 
-pandoc $_flag_file -t html --pdf-engine weasyprint --css @styleDir@/css/style-$_flag_orientation.css --css $_flag_style --template @templateDir@/default.html --katex -o (printf $_flag_file | sed 's/.md/.pdf/g')
+pandoc $_flag_file -t html --pdf-engine weasyprint --css @styleDir@/css/style-$_flag_orientation.css $_flag_style --template @templateDir@/default.html --katex -o (printf $_flag_file | sed 's/.md/.pdf/g')
