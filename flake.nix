@@ -53,7 +53,7 @@
                 ++ prodPackages;
 
               scripts = {
-                run-build.exec = "sass --update --style compressed 'style/sass:style/css'";
+                run-build.exec = "sass --update 'style/sass:style/css'";
               };
 
               pre-commit.hooks = {
