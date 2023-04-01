@@ -29,7 +29,7 @@ end
 if set --query _flag_style
     #set should_run "true"
     printf "Style: %s\n" $_flag_style
-    set _flag_style "--css $_flag_style"
+    set _flag_style "--css=$_flag_style"
 end
 
 if set --query _flag_orientation
