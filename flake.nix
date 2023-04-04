@@ -30,8 +30,7 @@
         prodPackages = with pkgs; [
           fish
           python3Packages.weasyprint
-          #wkhtmltopdf
-          nerdfonts
+          (nerdfonts.override { fonts = [ "FiraCode" "Ubuntu" ]; })
           pandoc
           nodePackages.sass
         ];
