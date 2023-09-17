@@ -2,40 +2,41 @@
   description = "A CLI app to render markdown code to awesome PDF with the help of pandoc";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/22.11";
-    flake-utils.url = "github:numtide/flake-utils";
-    devenv.url = "github:cachix/devenv/latest";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    devenv.url = "github:cachix/devenv";
   };
 
   outputs = inputs @ {
     self,
-    flake-utils,
-    nixpkgs,
+    flake-parts,
     devenv,
     ...
   }:
-    flake-utils.lib.eachDefaultSystem (
-      system: let
-        inherit (builtins) substring;
-
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux" "aarch64-linux"];
+      perSystem = {
+        config,
+        self',
+        inputs',
+        pkgs,
+        system,
+        ...
+      }: let
         # to work with older version of flakes
-        lastModifiedDate = self.lastModifiedDate or self.lastModified or "19700101";
+        lastModifiedDate = self'.lastModifiedDate or self'.lastModified or "19700101";
 
         # Generate a user-friendly version number.
         version = builtins.substring 0 8 lastModifiedDate;
-
-        # Packages aliases
-        pkgs = nixpkgs.legacyPackages.${system};
-
         prodPackages = with pkgs; [
           fish
           python3Packages.weasyprint
-          (nerdfonts.override { fonts = [ "FiraCode" "Ubuntu" ]; })
+          (nerdfonts.override {fonts = ["FiraCode" "Ubuntu"];})
           pandoc
           nodePackages.sass
         ];
-      in rec {
-        devShell = devenv.lib.mkShell {
+      in {
+        devShells.default = devenv.lib.mkShell {
           inherit inputs pkgs;
           modules = [
             {
@@ -131,6 +132,6 @@
             program = "${self.packages.${system}.default}/bin/pandocTheming";
           };
         };
-      }
-    );
+      };
+    };
 }
