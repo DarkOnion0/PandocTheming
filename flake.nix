@@ -102,10 +102,10 @@
               #sass $src/style/sass:$src/style/css # TODO: implement this inside nix
               cp -r $src/style $out/
               cp -r $src/template $out/
-              cp -r $src/cli.fish $out/
+              cp -r $src/cli.bash $out/
               cp -r $src/filter $out/
 
-              chmod +x $out/cli.fish
+              chmod +x $out/cli.bash
 
               runHook postInstall
             '';
@@ -113,12 +113,12 @@
             preFixup = ''
               # Replace var inside cli
               # TODO: use substitute-all instead https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/substitute/substitute-all.nix
-              sed -i "s|@styleDir@|$out/style|g" $out/cli.fish
-              sed -i "s|@templateDir@|$out/template|g" $out/cli.fish
+              sed -i "s|@styleDir@|$out/style|g" $out/cli.bash
+              sed -i "s|@templateDir@|$out/template|g" $out/cli.bash
 
-              cat $out/cli.fish
+              cat $out/cli.bash
 
-              makeWrapper $out/cli.fish $out/bin/pandocTheming \
+              makeWrapper $out/cli.bash $out/bin/pandocTheming \
                 --prefix PATH : ${pkgs.lib.makeBinPath prodPackages} \
             '';
           };
